@@ -110,7 +110,6 @@ export class PayComponent implements OnInit {
     let gamesBought = this.storageService.get('gamesBought') || '0';
 
     purchases.push(parseInt(this.properSliderValue));
-    this.createGoals();
 
     let itemsBought = 0;
     for (let game of this.games) {
@@ -126,6 +125,7 @@ export class PayComponent implements OnInit {
 
     this.storageService.set('purchases', purchases);
     this.storageService.set('gamesBought', parseInt(gamesBought) + itemsBought);
+    this.createGoals();
   }
 
   private isGameAvailable(game: IGame): boolean {
