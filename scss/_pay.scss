@@ -52,10 +52,11 @@ div.pay-for-games {
   }
 
   div.checkout {
-    background: url('/assets/images/checkout-bg.png') 0 0 no-repeat;
-    height: 448px;
-    width: 954px;
+    border-radius: 5px;
+    background-color: rgb(225, 225, 225);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
     margin: 50px auto;
+    max-width: 960px;
 
     div.games {
       height: 276px;
@@ -63,6 +64,8 @@ div.pay-for-games {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
+      background: url('/assets/images/games-bg.png') 0 0 no-repeat;
+      background-size: cover;
 
       div.game {
         display: flex;
@@ -143,11 +146,18 @@ div.pay-for-games {
       justify-content: center;
       align-items: center;
       padding: 0 30px;
+      border-top: 1px solid rgb(193, 193, 193);
+      background-color: rgb(230, 230, 230);
+      max-width: inherit;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      
 
       div.slider-wrapper {
         width: 100%;
         display: flex;
         position: relative;
+        margin-top: -45px;
 
         div.goal {
           position: absolute;
@@ -246,7 +256,6 @@ div.pay-for-games {
             background-image: -moz-linear-gradient( 90deg, rgb(207,207,207) 0%, rgb(194,194,194) 100%);
             background-image: -webkit-linear-gradient( 90deg, rgb(207,207,207) 0%, rgb(194,194,194) 100%);
             background-image: -ms-linear-gradient( 90deg, rgb(207,207,207) 0%, rgb(194,194,194) 100%);
-            box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.75);
             min-width: 180px;
             height: 54px;
             border-radius: 5px;
@@ -303,6 +312,11 @@ div.pay-for-games {
               font-weight: 400;
               outline: none;
               border-radius: 4px;
+              transition: filter 0.3s ease;
+
+              &:hover {
+                filter: brightness(110%);
+              }
             }
           }
         }
