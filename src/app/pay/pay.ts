@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import {IGame, GAME_AVAILABILITY} from '../common/interfaces/game';
 import {StorageService} from '../common/services/storage';
+import {PurchaseListener} from '../common/listeners/purchase';
 import {Games} from './games';
 import * as _ from 'lodash';
 
@@ -24,7 +25,7 @@ export class PayComponent implements OnInit {
   @ViewChild('rangeInput') rangeInput: ElementRef;
   @ViewChild('goalsEl') goalsElement: ElementRef;
 
-  constructor(private storageService: StorageService) {
+  constructor(private purchaseListener: PurchaseListener, private storageService: StorageService) {
     this.games = Games;
     this.createGoals();
   }
@@ -106,11 +107,25 @@ export class PayComponent implements OnInit {
 
   private payAction(): void {
     let purchases = this.storageService.get('purchases') || [];
+    let gamesBought = this.storageService.get('gamesBought') || '0';
+
     purchases.push(parseInt(this.properSliderValue));
+    this.createGoals();
+
+    let itemsBought = 0;
+    for (let game of this.games) {
+      if (this.isGameAvailable(game)) {
+        itemsBought++;
+      }
+    }
+
+    this.purchaseListener.bought.emit({
+      amount: parseInt(this.properSliderValue),
+      itemsBought: itemsBought
+    });
 
     this.storageService.set('purchases', purchases);
-
-    this.createGoals();
+    this.storageService.set('gamesBought', parseInt(gamesBought) + itemsBought);
   }
 
   private isGameAvailable(game: IGame): boolean {

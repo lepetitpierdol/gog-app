@@ -2,6 +2,11 @@
 
 @import 'mixins';
 
+@font-face {
+  font-family: 'DS Digital Bold';
+  src: url('/assets/fonts/DS-DIGIB.TTF');
+}
+
 body {
   background: url('/assets/images/bg.png');
   margin: 0 auto;

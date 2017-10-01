@@ -29,6 +29,10 @@
     opacity: 0;
     visibility: hidden; } }
 
+@font-face {
+  font-family: 'DS Digital Bold';
+  src: url("/assets/fonts/DS-DIGIB.TTF"); }
+
 body {
   background: url("/assets/images/bg.png");
   margin: 0 auto;
@@ -313,7 +317,7 @@ div.goodies {
   div.goodies > div {
     margin: 0 30px; }
     div.goodies > div div.title {
-      width: inherit;
+      width: 100%;
       position: relative;
       height: 20px;
       display: flex;
@@ -333,9 +337,9 @@ div.goodies {
         border-top: 1px solid #BFBFBF;
         width: 100%; }
   div.goodies div.goodies-block {
-    width: 100%; }
+    width: 65%; }
     div.goodies div.goodies-block div.goodies-list {
-      width: 70%;
+      width: inherit;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -352,4 +356,53 @@ div.goodies {
           div.goodies div.goodies-block div.goodies-list div.item p strong {
             font-weight: 600; }
   div.goodies div.sold-stats {
-    width: 30%; }
+    width: 35%; }
+    div.goodies div.sold-stats div.copies-sold {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: row;
+      margin: 20px 0; }
+      div.goodies div.sold-stats div.copies-sold > span {
+        color: #9B9B9B;
+        font-size: 25px;
+        height: 30px; }
+      div.goodies div.sold-stats div.copies-sold > div.num {
+        background: url("/assets/images/sold-bg.png");
+        margin: 0 1px;
+        width: 30px;
+        height: 41px;
+        line-height: 41px;
+        text-align: center;
+        color: #fff;
+        font-size: 40px;
+        font-family: 'DS Digital Bold'; }
+    div.goodies div.sold-stats div.unlock-exclusives {
+      text-align: center; }
+      div.goodies div.sold-stats div.unlock-exclusives p {
+        color: #656565;
+        font-size: 12px; }
+        div.goodies div.sold-stats div.unlock-exclusives p strong {
+          font-weight: 600; }
+      div.goodies div.sold-stats div.unlock-exclusives div.carousel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        height: 140px; }
+        div.goodies div.sold-stats div.unlock-exclusives div.carousel div.arrow {
+          height: 27px;
+          width: 27px;
+          display: flex;
+          align-self: center;
+          margin: 0 7px; }
+          div.goodies div.sold-stats div.unlock-exclusives div.carousel div.arrow.left {
+            background: url("/assets/images/arrow-left.png"); }
+          div.goodies div.sold-stats div.unlock-exclusives div.carousel div.arrow.right {
+            background: url("/assets/images/arrow-right.png"); }
+        div.goodies div.sold-stats div.unlock-exclusives div.carousel div.player {
+          width: calc(100% - 72px);
+          height: 100%;
+          background-color: #000;
+          border: 7px solid #fff; }

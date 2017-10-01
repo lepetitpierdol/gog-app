@@ -9,7 +9,7 @@ div.goodies {
     margin: 0 30px;
 
     div.title {
-      width: inherit;
+      width: 100%;
       position: relative;
       height: 20px;
       display: flex;
@@ -36,10 +36,10 @@ div.goodies {
   }
   
   div.goodies-block {
-    width: 100%;
+    width: 65%;
 
     div.goodies-list {
-      width: 70%;
+      width: inherit;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -50,10 +50,6 @@ div.goodies {
         width: calc(33.333% - 30px);
         margin: 15px;
         text-align: center;
-
-        img {
-
-        }
 
         p {
           color: #666666;
@@ -69,6 +65,77 @@ div.goodies {
   }
 
   div.sold-stats {
-    width: 30%;
+    width: 35%;
+
+    div.copies-sold {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: row;
+      margin: 20px 0;
+
+      > span {
+        color: #9B9B9B;
+        font-size: 25px;
+        height: 30px;
+      }
+      
+      > div.num {
+        background: url('/assets/images/sold-bg.png');
+        margin: 0 1px;
+        width: 30px;
+        height: 41px;
+        line-height: 41px;
+        text-align: center;
+        color: #fff;
+        font-size: 40px;
+        font-family: 'DS Digital Bold';
+      }
+    }
+    
+    div.unlock-exclusives {
+      text-align: center;
+
+      p {
+        color: #656565;
+        font-size: 12px;
+
+        strong {
+          font-weight: 600;
+        }
+      }
+
+      div.carousel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        height: 140px;
+
+        div.arrow {
+          height: 27px;
+          width: 27px;
+          display: flex;
+          align-self: center;
+          margin: 0 7px;
+
+          &.left {
+            background: url('/assets/images/arrow-left.png');
+          }
+
+          &.right {
+            background: url('/assets/images/arrow-right.png');
+          }
+        }
+
+        div.player {
+          width: calc(100% - 72px);
+          height: 100%;
+          background-color: #000;
+          border: 7px solid #fff;
+        }
+      }
+    }
   }
 }

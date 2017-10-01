@@ -11,7 +11,8 @@ import {GoodiesComponent} from './app/goodies/goodies';
 // Services
 import {StorageService} from './app/common/services/storage';
 
-// Pipes
+// Listeners
+import {PurchaseListener} from './app/common/listeners/purchase';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {StorageService} from './app/common/services/storage';
     FormsModule
   ],
   providers: [
-    StorageService
+    StorageService,
+    PurchaseListener
   ],
   bootstrap: [AppComponent]
 })
