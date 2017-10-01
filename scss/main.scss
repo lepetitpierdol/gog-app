@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+@import 'mixins';
+
+body {
+  background: url('/assets/images/bg.png');
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@import 'pay';
+@import 'slider';
+@import 'header';

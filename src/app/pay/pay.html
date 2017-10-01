@@ -1,0 +1,88 @@
+<div class="pay-for-games">
+  <h1>Pay what you want for the <strong>Divinity Bundle</strong> ($32 value!)</h1>
+
+  <div class="info">
+    <div>
+      <img src="/assets/images/ico-support.png" />
+      <span>Support Larian Studios</span>
+    </div>
+
+    <div>
+      <img src="/assets/images/ico-mouse.png" />
+      <span>Play Divinity 2: DC before release</span>
+    </div>
+
+    <div>
+      <img src="/assets/images/ico-drm.png" />
+      <span>Get DRM-free games with goodies</span>
+    </div>
+
+    <div class="time-left">
+      <img src="/assets/images/ico-time.png" />
+      <span>Only <strong>23:54:55</strong> left</span>
+    </div>
+  </div>
+
+  <div class="checkout">
+    <div class="games">
+      <div class="game" *ngFor="let game of games" [ngClass]="{'active': isGameAvailable(game)}">
+        <div class="img">
+          <img class="logo" [src]="isGameAvailable(game) ? game.images.active : game.images.inactive" />
+        </div>
+
+        <div class="info">
+          <img src="/assets/images/game-seperator.png" />
+
+          <div class="content">
+            <span class="name">{{ game.name }}</span> (normal price ${{ game.price }}) <br />
+            <strong>with {{ game.goodies }} goodies and {{ game.languages }} language versions</strong>
+          </div>
+
+          <img src="/assets/images/game-seperator.png" />
+        </div>
+
+        <div class="state">
+          <i class="icon"></i>
+          <span *ngIf="game.availability === 0">Below average</span>
+          <span *ngIf="game.availability === 1">Above average <strong>(from ${{ goals[0] }})</strong></span>
+          <span *ngIf="game.availability === 2">Top supporter <strong>(from ${{ goals[1] }})</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-slider">
+      <div class="slider-wrapper">
+        <span class="min-max">${{ sliderMin }}</span>
+
+        <div class="goals" #goalsEl>
+          <div class="goal" *ngFor="let goal of goals; let i = index;" [style.left.px]="getGoalPX(goal, i)">
+            <span>${{ goal }} ({{ i === 0 ? 'Average' : 'Top 10%' }})</span>
+            <i class="pount"></i>
+          </div>
+        </div>
+
+        <div class="slider">
+          <div class="fill" [style.height.px]="15" [style.width.%]="sliderHandlePositionPercent"></div>
+          <input type="range" [min]="sliderMin" [max]="sliderMax" [step]="sliderStep" [value]="sliderValue" (input)="sliderMoveAction()" (change)="sliderMoveAction()" #rangeInput>
+        </div>
+
+        <span class="min-max">${{ sliderMax }}</span>
+
+        <div class="status-wrapper" [style.left.px]="sliderHandlePositionPX - 45">
+          <div class="status">
+            <form>
+              <span>$</span>
+              <input type="number" name="amount" [(ngModel)]="properSliderValue" (change)="manuallyChangeSliderValue($event)" tabindex="-1" #priceInput>
+            </form>
+            <button (click)="payAction()">Checkout now</button>
+          </div>
+
+          <div class="typing-info">
+            <img src="/assets/images/ico-info.png" />
+            <span>Click the price to type in manually</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

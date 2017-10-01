@@ -1,0 +1,44 @@
+{
+  "name": "gog-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "npm run server:dev",
+    "build:dev": "ENV=development webpack --progress --colors",
+    "build:prod": "ENV=production webpack --progress --colors",
+    "server:dev": "concurrently \"ENV=development webpack-dev-server --inline --progress --colors --watch\" \"gulp watch\""
+  },
+  "author": "Aram Farahi",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "^4.2.4",
+    "@angular/common": "^4.2.4",
+    "@angular/compiler": "^4.2.4",
+    "@angular/core": "^4.2.4",
+    "@angular/forms": "^4.2.4",
+    "@angular/http": "^4.2.4",
+    "@angular/platform-browser": "^4.2.4",
+    "@angular/platform-browser-dynamic": "^4.2.4",
+    "@angular/router": "^4.2.4",
+    "core-js": "^2.4.1",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  },
+  "devDependencies": {
+    "@types/node": "~6.0.60",
+    "@types/webpack": "^3.0.11",
+    "awesome-typescript-loader": "^3.2.3",
+    "concurrently": "^3.5.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "ejs-loader": "^0.3.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "html-webpack-plugin": "^2.30.1",
+    "raw-loader": "^0.5.1",
+    "typescript": "~2.3.3",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
+}
