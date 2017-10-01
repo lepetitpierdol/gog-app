@@ -1,5 +1,7 @@
 import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
-import {IGame, GAME_AVAILABILITY} from '../interfaces/game';
+import {IGame, GAME_AVAILABILITY} from '../common/interfaces/game';
+import {StorageService} from '../common/services/storage';
+import {Games} from './games';
 import * as _ from 'lodash';
 
 @Component({
@@ -22,39 +24,8 @@ export class PayComponent implements OnInit {
   @ViewChild('rangeInput') rangeInput: ElementRef;
   @ViewChild('goalsEl') goalsElement: ElementRef;
 
-  constructor() {
-    this.games = [{
-      name: 'Divine Divinity',
-      price: 5.99,
-      languages: 4,
-      goodies: 6,
-      availability: GAME_AVAILABILITY.ALWAYS,
-      images: {
-        active: '/assets/images/game-1-active.png',
-        inactive: '/assets/images/game-1-inactive.png'
-      }
-    }, {
-      name: 'Beyond Divinity',
-      price: 5.99,
-      languages: 4,
-      goodies: 6,
-      availability: GAME_AVAILABILITY.AVERAGE,
-      images: {
-        active: '/assets/images/game-2-active.png',
-        inactive: '/assets/images/game-2-inactive.png'
-      }
-    }, {
-      name: 'Divinity 2',
-      price: 19.99,
-      languages: 7,
-      goodies: 9,
-      availability: GAME_AVAILABILITY.TOP,
-      images: {
-        active: '/assets/images/game-3-active.png',
-        inactive: '/assets/images/game-3-inactive.png'
-      }
-    }];
-
+  constructor(private storageService: StorageService) {
+    this.games = Games;
     this.createGoals();
   }
 
@@ -106,7 +77,7 @@ export class PayComponent implements OnInit {
   }
 
   private createGoals(): void {
-    let purchases = _.sortBy(window.localStorage.getItem('purchases') ? JSON.parse(window.localStorage.getItem('purchases')) : []).reverse();
+    let purchases = _.sortBy(this.storageService.get('purchases') || []).reverse();
 
     if (!purchases.length) {
       this.goals = [(this.sliderMin * 3).toFixed(2), (this.sliderMin * 10).toFixed(2)];
@@ -134,11 +105,11 @@ export class PayComponent implements OnInit {
   }
 
   private payAction(): void {
-    let purchases = window.localStorage.getItem('purchases') ? JSON.parse(window.localStorage.getItem('purchases')) : [];
-    
+    let purchases = this.storageService.get('purchases') || [];
     purchases.push(parseInt(this.properSliderValue));
 
-    window.localStorage.setItem('purchases', JSON.stringify(purchases));
+    this.storageService.set('purchases', purchases);
+
     this.createGoals();
   }
 

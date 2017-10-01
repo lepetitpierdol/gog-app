@@ -6,8 +6,10 @@ import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app/app';
 import {HeaderComponent} from './app/header/header';
 import {PayComponent} from './app/pay/pay';
+import {GoodiesComponent} from './app/goodies/goodies';
 
 // Services
+import {StorageService} from './app/common/services/storage';
 
 // Pipes
 
@@ -15,13 +17,15 @@ import {PayComponent} from './app/pay/pay';
   declarations: [
     AppComponent,
     HeaderComponent,
-    PayComponent
+    PayComponent,
+    GoodiesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   providers: [
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
