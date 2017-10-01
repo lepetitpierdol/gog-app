@@ -405,4 +405,5 @@ div.goodies {
           width: calc(100% - 72px);
           height: 100%;
           background-color: #000;
-          border: 7px solid #fff; }
+          border: 7px solid #fff;
+          box-sizing: border-box; }
